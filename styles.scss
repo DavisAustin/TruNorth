@@ -1,0 +1,103 @@
+/*
+ Description:  Main site for Tru North Designs, a branding and web-design agency.
+ Author:       Austin Davis
+ Version:      1.0.0
+*/
+
+/********************
+Constants | Variables
+*********************/
+
+$font-stack: europa, sans-serif;
+$primary-color: #444;
+$secondary-color: tomato;
+
+/********************
+Mixins
+*********************/
+
+// Flexbox Containers
+
+@mixin flexbox {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+@mixin inline-flex {
+	display: -webkit-inline-box;
+	display: -webkit-inline-flex;
+	display: -moz-inline-flex;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+}
+
+// Flexbox Direction
+
+// Values: row | row-reverse | column | column-reverse
+// Default: row
+
+@mixin flex-direction($value: row) {
+	@if $value == row-reverse {
+		-webkit-box-direction: reverse;
+		-webkit-box-orient: horizontal;
+	} @else if $value == column {
+		-webkit-box-direction: normal;
+		-webkit-box-orient: vertical;
+	} @else if $value == column-reverse {
+		-webkit-box-direction: reverse;
+		-webkit-box-orient: vertical;
+	} @else {
+		-webkit-box-direction: normal;
+		-webkit-box-orient: horizontal;
+	}
+	-webkit-flex-direction: $value;
+	-moz-flex-direction: $value;
+	-ms-flex-direction: $value;
+	flex-direction: $value;
+}
+
+
+/**************************
+===========================
+Styles
+===========================
+**************************/
+
+html {
+	font-family: $font-stack;
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	color: $primary-color;
+}
+
+main {
+	width: 100%;
+	height: 100%;
+	@include flexbox;
+	@include flex-direction($value: row);
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+
+	.container {
+		width: 20%;
+		align-content: center;
+	}
+
+	h1 {
+		font-size: 5em;
+		text-align: center;
+	}
+
+	p {
+		font-size: 2em;
+		text-align: center;
+	}
+}
