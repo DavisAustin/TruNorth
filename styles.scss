@@ -74,30 +74,115 @@ html {
 body {
 	height: 100%;
 	margin: 0;
+	padding: 0;
 	color: $primary-color;
 }
+
+/********************
+Navigation
+*********************/
+
+//slide in from left
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+header {
+	height: 75px;
+	margin: 0;
+	padding: 0 3%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	@include flexbox;
+	@include flex-direction($value: row);
+	justify-content: space-between;
+	align-items: center;
+
+	#logo {
+
+		img {
+			height: 30px;
+			margin: 0;
+			fill: $primary-color;
+		}
+	}
+
+	#navigation {
+
+		ul {
+			display: flex;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			
+			li {
+				animation: 1s ease-out 0s 1 slideInFromTop;
+				height: auto;
+				margin: 0;
+				margin-right: 10px;
+				padding: 0;
+
+				a {
+					padding: 0px 20px;
+					text-decoration: none;
+					background-color: rgba(245, 245, 245, 0);
+					color: $primary-color;
+					font-size: 1.2rem;
+					border-radius: 2px;
+					-webkit-transition: all 300ms ease-in-out;
+    				transition: all 300ms ease-in-out;
+				}
+
+				a:hover {
+					 background-color: rgba(245, 245, 245, 1);
+					 padding: 10px 20px;
+				}
+			}
+			li:last-child {
+				margin: 0;
+			}
+		}
+
+	}
+}
+
+
+/********************
+Main
+*********************/
 
 main {
 	width: 100%;
 	height: 100%;
 	@include flexbox;
 	@include flex-direction($value: row);
-	flex-direction: row;
 	justify-content: center;
-	align-content: center;
+	align-items: center;
 
 	.container {
-		width: 20%;
-		align-content: center;
+		width: 50%;
 	}
 
 	h1 {
-		font-size: 5em;
+		pointer-events: none;
+		margin: 0;
+		margin-bottom: 4%;
+		font-size: 5rem;
 		text-align: center;
 	}
 
 	p {
-		font-size: 2em;
+		font-size: 2rem;
 		text-align: center;
+		margin: 0;
 	}
 }
